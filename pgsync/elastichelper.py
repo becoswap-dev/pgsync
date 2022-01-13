@@ -31,6 +31,7 @@ from .settings import (
     ELASTICSEARCH_QUEUE_SIZE,
     ELASTICSEARCH_RAISE_ON_ERROR,
     ELASTICSEARCH_RAISE_ON_EXCEPTION,
+    ELASTICSEARCH_RETRY_ON_TIMEOUT,
     ELASTICSEARCH_SSL_SHOW_WARN,
     ELASTICSEARCH_STREAMING_BULK,
     ELASTICSEARCH_THREAD_COUNT,
@@ -144,6 +145,7 @@ class ElasticHelper(object):
         # max_retries, initial_backoff & max_backoff are only applicable when
         # streaming bulk is in use
         max_retries: int = max_retries or ELASTICSEARCH_MAX_RETRIES
+        retry_on_timeout: bool = ELASTICSEARCH_RETRY_ON_TIMEOUT
         initial_backoff: int = initial_backoff or ELASTICSEARCH_INITIAL_BACKOFF
         max_backoff: int = max_backoff or ELASTICSEARCH_MAX_BACKOFF
         raise_on_exception: bool = (
@@ -162,6 +164,7 @@ class ElasticHelper(object):
                 max_backoff=max_backoff,
                 initial_backoff=initial_backoff,
                 refresh=refresh,
+                retry_on_timeout=retry_on_timeout,
                 raise_on_exception=raise_on_exception,
                 raise_on_error=raise_on_error,
             ):

@@ -65,12 +65,15 @@ ELASTICSEARCH_CLIENT_CERT = env.str("ELASTICSEARCH_CLIENT_CERT", default=None)
 ELASTICSEARCH_CLIENT_KEY = env.str("ELASTICSEARCH_CLIENT_KEY", default=None)
 ELASTICSEARCH_AWS_REGION = env.str("ELASTICSEARCH_AWS_REGION", default=None)
 ELASTICSEARCH_AWS_HOSTED = env.bool("ELASTICSEARCH_AWS_HOSTED", default=False)
+
 ELASTICSEARCH_STREAMING_BULK = env.bool(
     "ELASTICSEARCH_STREAMING_BULK", default=False
 )
 # maximum number of times a document will be retried when ``429`` is received,
 # set to 0 (default) for no retries on ``429``
 ELASTICSEARCH_MAX_RETRIES = env.int("ELASTICSEARCH_MAX_RETRIES", default=0)
+ELASTICSEARCH_RETRY_ON_TIMEOUT = env.bool("ELASTICSEARCH_RETRY_ON_TIMEOUT", default=True)
+
 # number of seconds we should wait before the first retry.
 # Any subsequent retries will be powers of ``initial_backoff * 2**retry_number``
 ELASTICSEARCH_INITIAL_BACKOFF = env.int(
