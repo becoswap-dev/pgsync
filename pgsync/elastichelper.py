@@ -165,7 +165,6 @@ class ElasticHelper(object):
                 max_backoff=max_backoff,
                 initial_backoff=initial_backoff,
                 refresh=refresh,
-                retry_on_timeout=retry_on_timeout,
                 raise_on_exception=raise_on_exception,
                 raise_on_error=raise_on_error,
             ):
